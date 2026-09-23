@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" class="technical-post">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lombardo · Human PK explorer</title>
+<meta name="description" content="Explore 1,352 human intravenous pharmacokinetic records from Lombardo, Berellini and Obach (2018).">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="theme.css"><link rel="stylesheet" href="viewer.css">
+<script src="../data/dataset.js" defer></script><script src="app.js" defer></script>
+</head>
+<body>
+<div class="blog-grid">
+<aside class="blog-toc"><h4>Human pharmacokinetics</h4><a href="#overview">Overview</a><a href="#compounds">Compound explorer</a><a href="#relationships">PK relationships</a><a href="#source">Source & data notes</a><div class="toc-note">LOMBARDO ET AL.<br>2018 · HUMAN · IV</div></aside>
+<main class="blog-content">
+<div class="eyebrow" id="overview">DATASET EXPLORER / 2018</div>
+<h1>Human pharmacokinetics,<br>compound by compound.</h1>
+<p class="subtitle"><em>The Lombardo collection: intravenous PK parameters, molecular properties, and the literature behind 1,352 drug compounds.</em></p>
+<div class="stat-row"><div class="stat-card"><div class="num">1,352</div><div class="label">Drug compounds</div></div><div class="stat-card"><div class="num">5</div><div class="label">PK endpoints</div></div><div class="stat-card"><div class="num">20</div><div class="label">Source columns</div></div><div class="stat-card"><div class="num">Human IV</div><div class="label">Study scope</div></div></div>
+<div class="intro-links"><a href="https://pubmed.ncbi.nlm.nih.gov/30115648/" target="_blank" rel="noreferrer">Read the paper ↗</a><a href="../data/lombardo-2018.xlsx" download>Download source workbook ↓</a></div>
+<h2 id="compounds">Compound explorer</h2>
+<p class="section-intro">Find a compound, narrow the collection, then select a name to inspect the full record.</p>
+<form id="filters" class="filter-panel" role="search">
+<div class="search-row"><label class="search-label">Search the collection<input id="search" type="search" placeholder="Compound, CAS, SMILES, or reference…" autocomplete="off"></label><label>Ionization at pH 7.4<select id="ion"><option value="">All ionization states</option></select></label></div>
+<div class="range-row"><label>Filter by endpoint<select id="metric"><option value="cl">Clearance · mL/min/kg</option><option value="vdss">VDss · L/kg</option><option value="halfLife">Half-life · h</option><option value="fu">Fraction unbound · 0–1</option><option value="mrt">MRT · h</option><option value="mw">Molecular weight · g/mol</option></select></label><label>Minimum<input id="min" type="number" step="any" placeholder="No minimum"></label><label>Maximum<input id="max" type="number" step="any" placeholder="No maximum"></label><button type="reset" class="quiet">Reset filters</button></div>
+<label class="check"><input type="checkbox" id="complete"> Only compounds with all five PK endpoints</label>
+<div id="filter-error" role="alert"></div>
+</form>
+<div class="results-toolbar"><span id="result-count" role="status" aria-live="polite">Loading records…</span><button id="export">Export results (CSV) ↓</button></div>
+<div class="table-scroll data-table"><table id="table"><caption class="sr-only">Filtered compound records. Activate column headings to sort; compound names open full details.</caption><thead><tr id="columns"></tr></thead><tbody id="rows"></tbody></table></div>
+<div id="empty" class="empty" hidden>No compounds match these filters. Try a broader search or reset the filters.</div>
+<div class="pagination"><span id="page-info"></span><div><button id="prev" aria-label="Previous page">← Previous</button><button id="next" aria-label="Next page">Next →</button></div></div>
+<p class="small-note">CL = clearance · VDss = steady-state volume of distribution · fu = fraction unbound in plasma · MRT = mean residence time. A dash indicates a missing value.</p>
+<h2 id="relationships">PK relationships</h2>
+<p class="section-intro">Explore the current filtered collection. Hover or click a point to identify a compound.</p>
+<div class="plot-panel"><div class="plot-controls"><label>Horizontal axis<select id="x-axis"></select></label><label>Vertical axis<select id="y-axis"></select></label><label class="check"><input id="log-scale" type="checkbox" checked> Log₁₀ axes</label></div><canvas id="plot" role="img" aria-label="Scatter plot of filtered pharmacokinetic measurements"></canvas><div id="plot-status" class="small-note" aria-live="polite"></div><div id="point-info">Select a point to view its record, or use the accessible compound table above.</div></div>
+<h2 id="source">Source & data notes</h2>
+<div class="tldr"><span class="tldr-label">A traceable copy of the corrected supplement</span>Downloaded from the U.S. EPA’s <a href="https://github.com/USEPA/CompTox-ExpoCast-httk/blob/main/datatables/Lombardo2018-Supplemental_82966_revised_corrected.xlsx" target="_blank" rel="noreferrer">CompTox-ExpoCast-httk repository ↗</a>. All 1,352 compound rows and 20 source columns are retained. No deduplication, endpoint imputation, or unit conversion is applied.</div>
+<p>Lombardo F, Berellini G, Obach RS. <a href="https://doi.org/10.1124/dmd.118.082966" target="_blank" rel="noreferrer">Trend Analysis of a Database of Intravenous Pharmacokinetic Parameters in Humans for 1352 Drug Compounds.</a> <em>Drug Metabolism and Disposition.</em> 2018;46(11):1466–1477.</p>
+<p class="small-note">This is a compound-level compilation, not individual patient data or concentration–time profiles. Consult each record’s reference, comments, and notes for study context and derived measurements. Ionization and MoKa descriptors are source-reported calculations. Blank cells and “n/a” become missing values in the viewer; the workbook preserves the original cells. Displayed numbers are rounded to six significant figures; exports retain source numeric precision. Log plots exclude missing, zero, and negative axis values.</p>
+<div class="intro-links"><a href="../data/lombardo-2018.csv" download>Full dataset CSV ↓</a><a href="../data/dataset.json" download>Dataset JSON ↓</a><a href="../data/provenance.json" download>Source & checksum ↓</a></div>
+</main></div>
+<div class="blog-footer"><span>&copy; 2026 Generative Expert Labs, Inc.</span></div>
+<dialog id="detail" aria-labelledby="detail-title"><div class="dialog-top"><span class="eyebrow">COMPOUND RECORD</span><button id="close-detail" aria-label="Close compound details">Close ×</button></div><h2 id="detail-title"></h2><div id="detail-body"></div></dialog>
+<noscript>This viewer requires JavaScript. You can still download the source workbook or CSV using the links above.</noscript>
+</body></html>

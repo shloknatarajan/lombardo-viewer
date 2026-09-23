@@ -1,0 +1,29 @@
+{
+  "source": "https://raw.githubusercontent.com/USEPA/CompTox-ExpoCast-httk/main/datatables/Lombardo2018-Supplemental_82966_revised_corrected.xlsx",
+  "sha256": "4c462bf75759b657e0c90542434a83610fe65d8c00ca164decab3955da75a7fb",
+  "pmid": "30115648",
+  "doi": "10.1124/dmd.118.082966",
+  "columns": {
+    "name": "Name",
+    "cas": "CAS #",
+    "smiles": "SMILES",
+    "vdss": "human VDss (L/kg)",
+    "cl": "human CL (mL/min/kg)",
+    "fu": "fraction unbound \nin plasma (fu)",
+    "mrt": "MRT (h)",
+    "halfLife": "terminal  t1/2 (h)",
+    "reference": "Reference",
+    "comments": "Comments ",
+    "notes": "Notes",
+    "year": "Year of first disclosure",
+    "mw": "MW",
+    "hba": "HBA",
+    "hbd": "HBD",
+    "tpsa": "TPSA_NO",
+    "rotBonds": "RotBondCount",
+    "ionState": "moka_ionState7.4",
+    "logP": "MoKa.LogP",
+    "logD": "MoKa.LogD7.4"
+  },
+  "rowCount": 1352
+}
